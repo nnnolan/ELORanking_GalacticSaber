@@ -1,7 +1,7 @@
 from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render, redirect
 
-from galaticsaber.login.forms import SignUpForm
+from .forms import SignUpForm
 
 def signup(request):
 
