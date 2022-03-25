@@ -1,12 +1,13 @@
 from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
 
-from .forms import SignUpForm
+from .forms import NewUserForm
 
 def signup(request):
 
     if request.method == 'POST':
-        form = SignUpForm(request.POST)
+        form = NewUserForm(request.POST)
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
@@ -16,5 +17,5 @@ def signup(request):
             return redirect('home') #index 
         
     else:
-            form = SignUpForm()
+            form = NewUserForm()
     return render(request, 'signup.html', {'form': form})
