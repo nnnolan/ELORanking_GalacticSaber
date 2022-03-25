@@ -6,3 +6,4 @@ def register(response):
     form = UserCreationForm()
 
     return render(response, 'register.html', {'form': form})
+    
