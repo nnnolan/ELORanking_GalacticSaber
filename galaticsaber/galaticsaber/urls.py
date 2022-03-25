@@ -18,7 +18,12 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+<<<<<<< Updated upstream
     path('login/', include('login.urls')),
     path("register/", include('register.urls')),
+=======
+
+    path("register", include("login.urls")),
+>>>>>>> Stashed changes
     # path('login/', include('login.urls')),
 ]

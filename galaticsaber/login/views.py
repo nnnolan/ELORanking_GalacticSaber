@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
@@ -19,3 +20,10 @@ def signup(request):
     else:
             form = NewUserForm()
     return render(request, 'signup.html', {'form': form})
+=======
+from django.urls import path
+from django.http import HttpResponse
+
+def my_view(request):
+    return HttpResponse("Hello, world. You're at the galaticsaber index.")
+>>>>>>> Stashed changes
