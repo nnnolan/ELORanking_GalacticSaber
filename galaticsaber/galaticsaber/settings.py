@@ -45,6 +45,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
+CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
+
+CRISPY_TEMPLATE_PACK = "bootstrap5" 
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -84,7 +88,10 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'd226k68317tivr',
         'USER': 'ooojvesaqokjoo',
-        'PASSWORD': 'a9cfd9995c51fefad9e7bedcc8f9b7cd5bb8ef2dc4c2a8f835a17ae40d652afb'
+        'PASSWORD': 'a9cfd9995c51fefad9e7bedcc8f9b7cd5bb8ef2dc4c2a8f835a17ae40d652afb',
+        'HOST': "ec2-3-230-122-20.compute-1.amazonaws.com",
+        'PORT': '5432',
+            
     }
 }
 

@@ -19,4 +19,7 @@ from django.urls import path,include
 urlpatterns = [
     path('admin/', admin.site.urls), 
     path('',include('main.urls')),
+    path('', include('django.contrib.auth.urls')),
 ]
+
+#come back tomorrow, youtube video paused at 41:00
