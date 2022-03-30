@@ -81,8 +81,10 @@ WSGI_APPLICATION = 'galaticsaber.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd226k68317tivr',
+        'USER': 'ooojvesaqokjoo',
+        'PASSWORD': 'a9cfd9995c51fefad9e7bedcc8f9b7cd5bb8ef2dc4c2a8f835a17ae40d652afb'
     }
 }
 
