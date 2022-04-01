@@ -18,4 +18,6 @@ def signup(request):
         form = RegisterForm()
     
     return render(request, 'registration/signup.html', {'form': form})
-        
+    
+def forgot_password(request):
+    return render(request, "login/forgot-password.html")
