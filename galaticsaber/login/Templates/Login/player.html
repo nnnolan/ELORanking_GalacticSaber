@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col-md-2">
+    <a href="{% url 'foos:index' %}">Leaderboard</a>
+  </div>
+  <div class="col-md-2">
+    <a href="{% url 'foos:new_game' %}">Enter a match result</a>
+  </div>
+  <div class="col-md-3">
+    Logged in as {{user}}. <a href="{% url 'logout' %}">Logout?</a>
+  </div>
+</div>
+
+<h1>{{player.name}} - Rating: {{player.rating}}</h1>
+
+<div class="row">
+  <div class="col-md-8">
+    <h2>Singles Games</h2>
+    {% if singles_games %}
+      <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Date</th>
+        <th>Rating Change</th>
+        <th>Red Player</th>
+        <th>Score</th>
+        <th>Score</th>
+        <th>Blue Player</th>
+        <th>Rating Change</th>
+      </tr>
+      </thead>
+      <tbody>
+    {% for game in singles_games %}
+      <tr>
+        <td>{{game.get_date_string}}</td>
+        {% if game.player1_rating_change > 0 %}
+          <td class="success">
+        {% else %}
+          <td class="danger">
+        {% endif %}
+        {{game.player1_end_rating}} ({{game.player1_rating_change}})</td>
+        <td><a href="{% url 'foos:player' game.player1.id %}">{{game.player1}}</a></td>
+        <td>{{game.player1_score}}</td>
+        <td>{{game.player2_score}}</td>
+        <td><a href="{% url 'foos:player' game.player2.id %}">{{game.player2}}</a></td>
+        {% if game.player2_rating_change > 0 %}
+          <td class="success">
+        {% else %}
+          <td class="danger">
+        {% endif %}
+        {{game.player2_end_rating}} ({{game.player2_rating_change}})</td>
+      </tr>
+    {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+      <div class="row">
+        <div class="col-md-8">No games available.</div>
+      </div>
+    {% endif %}
+  </div>
+  <div class="col-md-4">
+    <h2>Probability vs. Others</h2>
+    {% if player_probabilities %}
+      <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Player</th>
+        <th>Probability</th>
+        <th>Wins</th>
+        <th>Losses</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for player in player_probabilities %}
+        <tr>
+          <td><a href="{% url 'foos:player' player.id %}">{{player.name}}</a> ({{player.rating}})</td>
+          <td>{{player.probability}}</td>
+          <td>{{player.wins}}</td>
+          <td>{{player.losses}}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+      </table>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}
