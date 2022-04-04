@@ -2,18 +2,6 @@
 
 {% block content %}
 
-<div class="row">
-  <div class="col-md-2">
-    <a href="{% url 'foos:index' %}">Leaderboard</a>
-  </div>
-  <div class="col-md-2">
-    <a href="{% url 'foos:new_game' %}">Enter a match result</a>
-  </div>
-  <div class="col-md-3">
-    Logged in as {{user}}. <a href="{% url 'logout' %}">Logout?</a>
-  </div>
-</div>
-
 <h1>{{player.name}} - Rating: {{player.rating}}</h1>
 
 <div class="row">
