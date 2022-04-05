@@ -11,7 +11,9 @@ from django.contrib.auth.decorators import login_required
 def home(request):
     return render(request, "login/home.html")
 
-
+def leaderboard(request):
+    return render(request, "login/leaderboard.html")
+    
 def signup(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
@@ -24,6 +26,7 @@ def signup(request):
     
     return render(request, 'registration/signup.html', {'form': form})
     
+
 # def forgot_password(request):
 #     return render(request, "login/forgot-password.html")
 
