@@ -1,7 +1,6 @@
 import datetime
 
 from django.db import models
-
 from django.contrib.auth.models import User 
 
 
@@ -29,11 +28,38 @@ class Player(models.Model):
     # else:
     #     print("error") ## fix this, needs to respond if no login
 
-class mtg_duel(models.Model):
-    player1 = models.ForeignKey(Player, on_delete=models.CASCADE, related_name='player1')
-    player2 = models.ForeignKey(Player, on_delete=models.CASCADE, related_name='player2')
-    date = models.DateTimeField(default=datetime.datetime.now)
+class lsd_duel(models.Model):
+    player1 = models.ForeignKey(Player, on_delete=models.CASCADE, related_name='lsd_duelist1')
+    player2 = models.ForeignKey(Player, on_delete=models.CASCADE, related_name='lsd_duelist2')
+    player1_score = models.IntegerField(default=0)
+    player2_score = models.IntegerField(default=0)
+    player1_start_rating = models.IntegerField(default=1000)
+    player2_start_rating = models.IntegerField(default=1000)
+    player1_end_rating = models.IntegerField(default=1000)
+    player2_end_rating = models.IntegerField(default=1000)
+    date = models.DateTimeField(default=datetime.datetime.now),
+    
+    def get_winner(self):
+        if self.player1_score > self.player2_score:
+            return self.player1
+        else:
+            return self.player2
+    
+    def __str__(self):
+        return "%s vs %s" % (self.player1, self.player2)
 
+
+class mtg_duel(models.Model):
+    player1 = models.ForeignKey(Player, related_name='mtg_duelist1', on_delete=models.CASCADE)
+    player2 = models.ForeignKey(Player, related_name='mtg_duelist2', on_delete=models.CASCADE)
+    player1_score = models.IntegerField(default=0)
+    player2_score = models.IntegerField(default=0)
+    player1_start_rating = models.IntegerField(default=1000)
+    player2_start_rating = models.IntegerField(default=1000)
+    player1_end_rating = models.IntegerField(default=1000)
+    player2_end_rating = models.IntegerField(default=1000)
+    date = models.DateTimeField(default=datetime.datetime.now),
+    
     def get_winner(self):
         if self.player1_score > self.player2_score:
             return self.player1

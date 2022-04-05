@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+{% if status_message %}<p><strong>{{ status_message }}</strong></p>{% endif %}
+
+{% if players %}
+
+<div class="row">
+  <div class="col-md-12">
+    <a href="{% url 'foos:index' %}">Leaderboard</a>
+  </div>
+</div>
+<div class="row">
+
+
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <h2>New Singles Game</h2>
+  </div>
+</div>
+<div class="row">
+  <form action="{% url 'foos:new_game' %}" method="post" class="form-horizontal">
+  {% csrf_token %}
+    <div class="form-group">
+      <label class="col-sm-2 control-label text-danger">Red Player:</label>
+      <div class="col-sm-4">
+        <select name="player1">
+        {% for player in players %}
+          <option value="{{ player.id }}">{{ player.name }}</option>
+        {% endfor %}
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Score:</label>
+      <div class="col-sm-4">
+        <input type="text" name="player1_score" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label text-primary">Blue Player:</label>
+      <div class="col-sm-4">
+        <select name="player2">
+        {% for player in players %}
+          <option value="{{ player.id }}">{{ player.name }}</option>
+        {% endfor %}
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Score:</label>
+      <div class="col-sm-4">
+        <input type="text" name="player2_score" />
+      </div>
+    </div>
+  <input type="hidden" name="game_type" value="singles" />
+  <input type="submit" value="Submit" />
+  </form>
+</div>
+{% comment %} 
+<div class="row">
+  <div class="col-md-6">
+    <h2>New MTG Game</h2>
+  </div>
+</div>
+
+<div class="row">
+  <form action="{% url 'foos:new_game' %}" method="post" class="form-horizontal">
+  {% csrf_token %}
+    <div class="form-group">
+      <label class="col-sm-2 control-label text-danger">Red Team:</label>
+      <div class="col-sm-4">
+        <select name="team1player1">
+        {% for player in players %}
+          <option value="{{ player.id }}">{{ player.name }}</option>
+        {% endfor %}
+        </select>
+      </div>
+      <div class="col-sm-4">
+        <select name="team1player2">
+        {% for player in players %}
+          <option value="{{ player.id }}">{{ player.name }}</option>
+        {% endfor %}
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Score:</label>
+      <div class="col-sm-4">
+        <input type="text" name="team1_score" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label text-primary">Blue Team:</label>
+      <div class="col-sm-4">
+        <select name="team2player1">
+        {% for player in players %}
+          <option value="{{ player.id }}">{{ player.name }}</option>
+        {% endfor %}
+        </select>
+      </div>
+      <div class="col-sm-4">
+        <select name="team2player2">
+        {% for player in players %}
+          <option value="{{ player.id }}">{{ player.name }}</option>
+        {% endfor %}
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Score:</label>
+      <div class="col-sm-4">
+        <input type="text" name="team2_score" />
+      </div>
+    </div>
+  <input type="hidden" name="game_type" value="doubles" />
+  <input type="submit" value="Submit" />
+  </form>
+</div> {% endcomment %}
+
+{% endif %}
+
+{% endblock %}
