@@ -13,7 +13,7 @@ def home(request):
 
 def leaderboard(request):
     return render(request, "login/leaderboard.html")
-    
+
 def signup(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
