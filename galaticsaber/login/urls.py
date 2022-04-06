@@ -8,6 +8,7 @@ urlpatterns = [
     path('sign-up', views.signup, name="sign_up"),
     path('forgot-password', views.home, name="forgot_password"),
     path('leaderboard', views.leaderboard, name="leaderboard"),
-    path(r'^game/new/$', views.new_game, name="new_game"),
-    path('player/<int:player_id>', views.player, name="player_detail"),
+    # path(r^game/new/', views.new_game, name="new_game"),
+    # path('player/<int:player_id>', views.player, name="player_detail"),
+    path('player', views.player, name='player_detail')
 ]

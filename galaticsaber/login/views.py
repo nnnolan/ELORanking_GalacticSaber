@@ -30,8 +30,10 @@ def signup(request):
 def forgot_password(request):
     return render(request, "registration/forgot-password.html")
 
+# def player(request, player_id):
+#     return render("login/player.html")
 
-login_required
+@login_required
 def new_game(request):
     players = Player.objects.all().order_by('name')
     # If it isn't a post, we are just going to display the game entry form
@@ -76,7 +78,10 @@ def new_game(request):
 def player(request, player_id):
     player = get_object_or_404(Player, pk=player_id)
     # Pull a list of all games played by the player
-    singles_games = SinglesGame.objects\
+    singles_games = mtg_duel.objects\
+        .filter(Q(player1=player) | Q(player2=player))\
+        .order_by('-date')
+    lsd_games = mtg_duel.objects\
         .filter(Q(player1=player) | Q(player2=player))\
         .order_by('-date')
     processed_singles_games = []

@@ -2,8 +2,13 @@
 
 {% block content %}
 
-<h1>{{player.name}} - Rating: {{player.rating}}</h1>
+{% block title %}
 
+<h1> Hello, {{ name }} </h1>
+
+{% endblock %}
+
+{% comment %} <h1>{{player.name}} - Rating: {{player.rating}}</h1>
 <div class="row">
   <div class="col-md-8">
     <h2>Singles Games</h2>
@@ -75,6 +80,6 @@
       </table>
     {% endif %}
   </div>
-</div>
+</div> 
 
-{% endblock %}
+{%endblock%} {% endcomment %}
