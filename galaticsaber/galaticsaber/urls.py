@@ -20,5 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls), 
     path('',include('login.urls')),
     path('', include('django.contrib.auth.urls')),
+    #to do, add password reset url https://docs.djangoproject.com/en/4.0/topics/auth/default/ 
 ]
-#41:00 youtube video
