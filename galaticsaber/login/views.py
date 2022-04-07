@@ -5,6 +5,7 @@ from .forms import RegisterForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
+from django.http import Http404
 from .models import Player, mtg_duel, lsd_duel
 
 # Create your views here.
@@ -28,7 +29,7 @@ def signup(request):
             user = form.save()
             Player.objects.create(user=user)
             login(request, user)
-            return redirect('/home')
+            return redirect('/')
     else:
         form = RegisterForm()
     
