@@ -7,6 +7,18 @@
 <h1> Hello, {{ name }} </h1>
 
 {% endblock %}
+<h1> Hello , {{player.name}}</h1>
+{{% if player.mtg.elo %}}
+<h4> MTG Elo: {{player.mtg.elo}}</h4>
+{% else %}
+
+<h4> MTG Elo: N/A></h4>
+{% endif %}
+{{ if player.lsd.elo %}}
+<div> LSD Elo: {{player.lsd.elo}}</div>
+{% else %}
+<div> LSD Elo: N/A</div>
+{% endif %}
 
 {% comment %} <h1>{{player.name}} - Rating: {{player.rating}}</h1>
 <div class="row">

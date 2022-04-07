@@ -2,20 +2,23 @@ import datetime
 
 from django.db import models
 from django.contrib.auth.models import User 
+from django.contrib.auth import get_user_model, get_username
 
 
 class Player(models.Model):
-        username = models.CharField(max_length=100)
-
-        #lightsaber duel elo 
+    user = get_username()
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    #lightsaber duel elo rating
+    class Lsd(models.Model):
         lsd_wins = models.IntegerField(default=0)
         lsd_losses = models.IntegerField(default=0)
         lsd_draws = models.IntegerField(default=0)
         lsd_games = models.IntegerField(default=0)
         lsd_elo = models.IntegerField(default=0)
         lsd_winpercent = models.FloatField(default=0)
-       
-        #mtg  elo
+    
+    #mtg  elo
+    class Mtg(models.Model):
         mtg_wins = models.IntegerField(default=0)
         mtg_losses = models.IntegerField(default=0)
         mtg_draws = models.IntegerField(default=0)
@@ -23,8 +26,8 @@ class Player(models.Model):
         mtg_elo = models.IntegerField(default=0)
         mtg_winpercent = models.FloatField(default=0)
 
-        def __str__(self):
-            return "%s" % self.username
+    def __str__(self):
+        return "%s" % self.username
     # else:
     #     print("error") ## fix this, needs to respond if no login
 

@@ -2,7 +2,7 @@ import math
 
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import RegisterForm
-from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth import login, logout, authenticate, User
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from .models import Player, mtg_duel, lsd_duel
@@ -14,6 +14,12 @@ def home(request):
 
 def leaderboard(request):
     return render(request, "login/leaderboard.html")
+
+def selectleague(request):
+    class Player:
+        def get(self):
+            user = get_object_or_404(Player, pk=self.request.user.id)
+
 
 def signup(request):
     if request.method == 'POST':
