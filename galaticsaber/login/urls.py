@@ -10,5 +10,5 @@ urlpatterns = [
     path('leaderboard', views.leaderboard, name="leaderboard"),
     # path(r^game/new/', views.new_game, name="new_game"),
     # path('player/<int:player_id>', views.player, name="player_detail"),
-    path('player', views.player, name='player_detail')
+    path('player/<int:player_id>', views.player, name='player')
 ]

@@ -2,7 +2,7 @@ import math
 
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import RegisterForm
-from django.contrib.auth import login, logout, authenticate, User
+from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from .models import Player, mtg_duel, lsd_duel
@@ -26,6 +26,7 @@ def signup(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             user = form.save()
+            Player.objects.create(user=user)
             login(request, user)
             return redirect('/home')
     else:
@@ -36,8 +37,8 @@ def signup(request):
 def forgot_password(request):
     return render(request, "registration/forgot-password.html")
 
-# def player(request, player_id):
-#     return render("login/player.html")
+def player(request, player_id):
+    return render("login/player.html")
 
 @login_required
 def new_game(request):

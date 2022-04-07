@@ -2,11 +2,10 @@ import datetime
 
 from django.db import models
 from django.contrib.auth.models import User 
-from django.contrib.auth import get_user_model, get_username
+from django.contrib.auth import get_user_model
 
 
 class Player(models.Model):
-    user = get_username()
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     #lightsaber duel elo rating
     class Lsd(models.Model):
