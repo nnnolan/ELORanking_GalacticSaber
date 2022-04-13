@@ -1,5 +1,5 @@
 """
-WSGI config for galaticsaber project.
+WSGI config for galacticsaber project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'galaticsaber.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'galacticsaber.settings')
 
 application = get_wsgi_application()
