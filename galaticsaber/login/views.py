@@ -39,7 +39,7 @@ def forgot_password(request):
     return render(request, "registration/forgot-password.html")
 
 def player(request, player_id):
-    player = get_object_or_404(Player, pk=player_id)
+    
     return render("login/player.html")
 
 # @login_required
