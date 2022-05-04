@@ -1,0 +1,14 @@
+{% extends 'reduxapp/base.html' %}
+
+{% block content %}
+
+<h1>Find players</h1><br>
+<form class="form-inline my-2 my-lg-0" action="{% url 'playersearch' %}" method="POST">
+  {% csrf_token %}
+
+
+  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search"></input>
+  <button class="btn btn-outline-success my-2 my-sm-0" name='searchusers' type="submit">Search</button>
+</form>
+
+{% endblock %}

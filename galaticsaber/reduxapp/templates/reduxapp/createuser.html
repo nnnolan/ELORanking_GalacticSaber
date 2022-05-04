@@ -1,0 +1,22 @@
+{% extends 'reduxapp/base.html' %}
+
+{% block content %}
+<h1>Create user</h1>
+
+<p style="color: red;">{{ error }}</p>
+<form class="userform" method="post">
+  {% csrf_token %}
+
+  <label for="nickname">Nickname:</label><br>
+  <input type="text" id="nname" name="nickname"><br>
+  <label for="realname">Full Name:</label><br>
+  <input type="text" id="rname" name="realname"><br><br>
+
+  <button class="btn btn-success" id="createbutton" type="Submit" name="createbutton">Create</button>
+
+</form>
+
+
+
+
+{% endblock %}

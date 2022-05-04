@@ -1,0 +1,100 @@
+:root {
+    --redux-red: #c01f29;
+    --redux-white: #ffffff;
+}
+
+/* Master CSS */
+h1 {
+  color: black;
+}
+
+.base-container {
+  margin: auto;
+  width: 70%;
+  padding: 10px;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+
+/* Ranking page */
+.ranking-container {
+  text-align: center;
+}
+
+.top10-list {
+  background-color: var(--redux-white);
+  border-radius: 5px;
+  border: 2px solid var(--redux-red);
+  margin: 0 auto;
+  width: 30%;
+  margin-top: 50px;
+  padding-top: 20px;
+}
+
+.top10-list .rank:hover {
+  font-weight: bold;
+  color: var(--redux-red)
+}
+
+
+/* Player Stats page */
+
+.chartjs {
+  margin: 0 auto;
+}
+
+#wrapper {
+  position: relative;
+  align-items: center;
+}
+
+.testi1 {
+  border: 1px solid green;
+}
+
+.measurement-box + .measurement-box {
+  margin: 0 0 0 5px;
+}
+
+.measurement-box {
+  width: 250px;
+  background-color: var(--redux-white);
+  border-radius: 5px;
+  display: inline-block;
+
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.measurement-box:hover {
+    box-shadow: 1px 1px 5px #707070;
+}
+
+.measurement {
+  margin: auto;
+}
+
+.measurement-title {
+  width: 50%;
+  color: Black;
+}
+
+.measurement-rating {
+    width:30%;
+    color: var(--redux-red);
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.info + .info{
+  margin: 0 0 0 300px;
+}
+
+.info {
+  display: inline-block;
+}
+
+.clearfix {
+  clear: both;
+}
