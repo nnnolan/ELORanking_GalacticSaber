@@ -1,0 +1,87 @@
+{% extends 'reduxapp/base.html' %}
+
+{% block content %}
+
+<div class="base-container">
+  <h1>New Game</h1>
+  <form class="userform" method="post">
+    {% csrf_token %}
+
+    <p style="color: red;">{{ error1 }}</p>
+    <label for="nickname">Player1:</label><br>
+    <input type="text" id="nname" name="player1" placeholder=""><br>
+
+    <p style="color: red;">{{ error2 }}</p>
+    <label for="nickname">Player2:</label><br>
+    <input type="text" id="nname" name="player2" placeholder=""><br><br>
+
+    <label for="mtg_or_lsd">Game Type:</label><br>
+    <select name="mtg_or_lsd" name="mtg_or_lsddrop">
+      <option value="1">MTG</option>                    <!-- mtg = 1, lsd = 0 -->
+      <option value="0">Lightsaber Duel</option>
+    </select><br><br>
+
+    <label for="realname">Winner:</label><br>
+    <select name="outcome" id="outcomedrop">
+      <option value="1">Player1</option>
+      <option value="0">Player2</option>
+      <option value="0.5">Draw</option>
+    </select><br><br>
+
+
+    <button class="createbutton" id="createbutton" type="Submit" name="createbutton">Submit</button>
+
+  </form>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <div class="mtg_game">
+
+    <table>
+      <tr>
+        <th>Player 1</th>
+        <th>Player 2</th>
+        <th>Result</th>
+      </tr>
+
+      {% for game in mtg_games %}
+      <tr>
+        <td>{{ mtg_game.player1 }}</td>
+        <td>{{ mtg_game.player2 }}</td>
+        <td>{{ mtg_game.result }}</td>
+      </tr>
+
+       {% endfor %}
+    </table>
+
+    <p>{{ game }}</p>
+  </div>
+
+  <div class="lsd_game">
+
+    <table>
+      <tr>
+        <th>Player 1</th>
+        <th>Player 2</th>
+        <th>Result</th>
+      </tr>
+
+      {% for game in lsd_games %}
+      <tr>
+        <td>{{ lsd_game.player1 }}</td>
+        <td>{{ lsd_game.player2 }}</td>
+        <td>{{ lsd_game.result }}</td>
+      </tr>
+
+       {% endfor %}
+    </table>
+
+    <p>{{ game }}</p>
+  </div>
+
+</div>
+
+
+{% endblock %}

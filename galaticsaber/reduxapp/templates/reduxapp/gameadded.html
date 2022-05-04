@@ -1,0 +1,22 @@
+{% extends 'reduxapp/base.html' %}
+
+{% block content %}
+<h1>Game added</h1>
+
+<p>{{ gamedata.message }}</p>
+
+{% if mtg_or_lsd = '1' %} 
+    {{ gamedata.user1.username }} {{ gamedata.user1.profile.mtg_currentELO|floatformat:0 }} ({{ gamedata.user1change|floatformat:2 }})
+    <br>
+    <br>
+    {{ gamedata.user2.username }} {{ gamedata.user2.profile.mtg_currentELO|floatformat:0 }} ({{ gamedata.user2change|floatformat:2 }})
+{% else %}
+    {{ gamedata.user1.username }} {{ gamedata.user1.profile.lsd_currentELO|floatformat:0 }} ({{ gamedata.user1change|floatformat:2 }})
+    <br>
+    <br>
+    {{ gamedata.user2.username }} {{ gamedata.user2.profile.lsd_currentELO|floatformat:0 }} ({{ gamedata.user2change|floatformat:2 }})
+{% endif %}
+
+
+
+{% endblock %}

@@ -1,0 +1,107 @@
+{% extends 'reduxapp/base.html' %}
+
+{% block content %}
+
+
+<div class="playerpage-container">
+  <h1>{{user.username}}</h1>
+  <div class="base-stats">
+    <p class="info full-name">Name: {{ user.profile.realname }}</p>
+    <p class="info date-joined"><i>Created: {{ user.date_joined }}</i></p>
+  </div>
+<!-- mtg elo-->
+  <div class="measurement-window" id="wrapper">
+
+    <div class="clearfix"></div>
+
+    <div class="measurement-box">
+      <p class="measurement measurement-rating">{{ user.profile.mtg_currentELO}}</p>
+      <p class="measurement measurement-title">Current MTG Rating</p>
+    </div>
+
+    <div class="measurement-box">
+      <p class="measurement measurement-rating">{{ user.profile.mtg_highestELO}}</p>
+      <p class="measurement measurement-title">Peak MTG Rating</p>
+    </div>
+
+    <div class="measurement-box">
+      <p class="measurement measurement-rating">{{ user.profile.mtg_lowestELO}}</p>
+      <p class="measurement measurement-title">Lowest MTG Rating</p>
+    </div>
+
+    <div class="clearfix"></div>
+<!-- lsd elo -->
+    <div class="clearfix"></div>
+
+    <div class="measurement-box">
+      <p class="measurement measurement-rating">{{ user.profile.lsd_currentELO}}</p>
+      <p class="measurement measurement-title">Current LSD Rating</p>
+    </div>
+
+    <div class="measurement-box">
+      <p class="measurement measurement-rating">{{ user.profile.lsd_highestELO}}</p>
+      <p class="measurement measurement-title">Peak LSD Rating</p>
+    </div>
+
+    <div class="measurement-box">
+      <p class="measurement measurement-rating">{{ user.profile.lsd_lowestELO}}</p>
+      <p class="measurement measurement-title">Lowest LSD Rating</p>
+    </div>
+
+    <div class="clearfix"></div>
+
+  </div>
+
+  <div id="container" class="chartjs" style="width: 60%;">
+      <canvas id="mtg-elo-chart" ></canvas>
+  </div>
+  
+  <div id="container" class="chartjs" style="width: 60%;">
+      <canvas id="lsd-elo-chart" ></canvas>
+  </div>
+
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+  <script>
+
+    var config = {
+      type: 'line',
+      data: {
+        datasets: [{
+          data: {{ data|safe }},
+          backgroundColor: 'rgba(192, 31, 41, 0.3)',
+          borderColor: 'rgba(192, 31, 41, 1)',
+
+
+          label: 'Rating'
+        }],
+        labels: {{ date|safe }},
+      },
+      options: {
+              tooltips: {
+                intersect: false,
+                responsive: true,
+                maintainAspectRatio: true,
+              },
+
+
+              legend: {
+                position: 'bottom',
+              },
+              title: {
+                display: true,
+
+                text: 'Rating of {{ user.username  }}'
+              }
+      }
+    };
+
+    window.onload = function() {
+      var ctx = document.getElementById('mtg-elo-chart').getContext('2d');
+      window.myLine = new Chart(ctx, config);
+    };
+
+  </script> 
+{% endblock %}

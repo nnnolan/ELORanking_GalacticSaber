@@ -1,0 +1,37 @@
+{% extends 'reduxapp/base.html' %}
+
+{% block content %}
+
+<div class="ranking-container">
+  <h1>Top 10 MTG Planeswalkers</h1>
+
+  <div class="top10-list">
+    {% for rank in MTG_ranking %}
+    
+
+    <div class="rank">
+      <p>{{ rank }}</p>
+    </div>
+
+    {% endfor %}
+  </div>
+
+</div>
+
+<div class="ranking-container">
+  <h1>Top 10 Lightsbaer Duelists</h1>
+
+  <div class="top10-list">
+    {% for rank in LSD_ranking %}
+    
+
+    <div class="rank">
+      <p>{{ rank }}</p>
+    </div>
+
+    {% endfor %}
+  </div>
+
+</div>
+
+{% endblock %}
